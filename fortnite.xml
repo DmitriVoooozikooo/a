@@ -1,0 +1,55 @@
+<Module>
+    <ModulePrefs title="REAL"/>
+    <Content type="HTML">
+        <![CDATA[
+            <!DOCTYPE html>
+            <html lang="en-us">
+            <head>
+                <meta charset="utf-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <title>REAL</title>
+                <meta name="description" content="Fotnite">
+                <meta property="og:image" content="https://dmitrivoooozikooo.github.io/fntunblkd/fotnite.png" />
+                <link rel="shortcut icon" href="https://dmitrivoooozikooo.github.io/fntunblkd/Loader/favicon.ico">
+                <link rel="stylesheet" href="https://dmitrivoooozikooo.github.io/fntunblkd/Loader/style.css">
+                <script src="https://dmitrivoooozikooo.github.io/fntunblkd/unity/unity-mod.js"></script>
+                <script src="https://dmitrivoooozikooo.github.io/fntunblkd/Loader/UnityProgress.js"></script>
+                <!-- <script src="https://dmitrivoooozikooo.github.io/fntunblkd/Build/UnityLoader.js"></script> -->
+                <script src="https://dmitrivoooozikooo.github.io/fntunblkd/Build/fotniteUnityLoader.js"></script>
+                <script>
+                    var gameInstance = UnityLoader.instantiate(
+                        "gameContainer",
+                        "https://dmitrivoooozikooo.github.io/fntunblkd/Build/cj3.json",
+                        {
+                            onProgress: UnityProgress,Module:{
+                                onRuntimeInitialized: function() {
+                                    UnityProgress(gameInstance, "complete")
+                                }
+                            }
+                        });
+
+                    function fixGameView() {
+                        const gameView= document.getElementById("gameView");
+                        if (gameView.clientHeight> gameView.clientWidth) {
+                            gameView.style.height= Math.floor(gameView.clientWidth)+ "px";
+                        }
+                    }
+                </script>
+                <style>
+                    body {
+                        margin: 0px;
+                        padding:0px;
+                    }
+                </style>
+            </head>
+            <body style="overflow:hidden; margin:0; padding:0;" onload="fixGameView()">
+                <div id="gameView" class="webgl-content" style="position: absolute; width: 100%; height: 100%; margin: 0px; padding:0px;">
+                    <div id="gameContainer" style="width: 100%; height: 100%; margin: 0px; padding:0px;"></div>
+                </div>
+                <script src="https://dmitrivoooozikooo.github.io/fntunblkd/js/analytics_ubg_v1_4.js"></script>
+                <script src="https://dmitrivoooozikooo.github.io/fntunblkd/js/ubg235_client_v1_1.js"></script>
+            </body>
+            </html>
+        ]]>
+    </Content>
+</Module>
