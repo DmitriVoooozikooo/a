@@ -1,0 +1,36 @@
+<Module>
+    <ModulePrefs title="Unity WebGL Player | Cluster Rush"/>
+    <Content type="HTML">
+        <![CDATA[
+            <!DOCTYPE html>
+            <html lang="en-us">
+            <head>
+                <meta charset="utf-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <title>Unity WebGL Player | Cluster Rush</title>
+                <link href="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/5.css" rel="stylesheet">
+                <script src="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/12.js" type="text/javascript"></script>
+            </head>
+            <body class="template">
+                <div class="template-wrap clear">
+                    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600" width="900"></canvas>
+                </div>
+                <script type="text/javascript">
+                    var Module = {
+                        TOTAL_MEMORY: 268435456,
+                        errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+                        compatibilitycheck: null,
+                        backgroundColor: "#222C36",
+                        splashStyle: "Dark",
+                        dataUrl: "Release/NG.data",
+                        codeUrl: "https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/13.js",
+                        asmUrl: "https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/14.js",
+                        memUrl: "Release/NG.mem",
+                    };
+                </script>
+                <script src="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/15.js"></script>
+            </body>
+            </html>
+        ]]>
+    </Content>
+</Module>
