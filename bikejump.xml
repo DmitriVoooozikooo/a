@@ -1,0 +1,130 @@
+<Module>
+    <ModulePrefs title="BikeJump"/>
+    <Content type="HTML">
+        <![CDATA[
+            <!DOCTYPE html>
+            <html lang="en-us">
+            <head>
+                <!--OTP version 1.2-->
+                <meta charset="utf-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <title>BikeJump</title>
+                <link rel="shortcut icon" href="TemplateData/favicon.ico">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/4.css">
+            </head>
+            <body>
+                <div id="unity-container" class="unity-desktop" style="width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden;">
+                    <canvas id="unity-canvas" style="width: 100%; height: 100%; cursor: default;"></canvas>
+                    <div id="unity-loading-bar">
+                        <div id="unity-logo"></div>
+                        <div id="unity-progress-bar-empty">
+                            <div id="unity-progress-bar-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="fullscreenbutton"></button>
+
+                <script>
+                    //---------------------- FullScreen
+                    var fullscreenButton = document.getElementById("fullscreenbutton");
+                    fullscreenButton.style.position = "absolute";
+                    fullscreenButton.style.right = "20px";
+                    fullscreenButton.style.bottom = "20px";
+                    fullscreenButton.style.width = "40px";
+                    fullscreenButton.style.height = "40px";
+                    fullscreenButton.style.backgroundImage = "url('TemplateData/fullscreen-button.png')";
+                    fullscreenButton.style.backgroundRepeat = "no-repeat";
+                    fullscreenButton.style.backgroundSize = "cover";
+
+                    fullscreenButton.addEventListener("click", function () {
+                        var doc = window.document;
+                        var docEl = doc.documentElement;
+
+                        var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+                        var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+                        if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+                            requestFullScreen.call(docEl);
+                        } else {
+                            cancelFullScreen.call(doc);
+                        }
+                    });
+                    //----------------------
+
+                    //Lock Scaling/Zooming
+                    document.getElementsByTagName("head")[0].innerHTML += '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">';
+                    document.getElementsByTagName("head")[0].innerHTML += '<meta name="HandheldFriendly" content="true" />';
+
+                    document.addEventListener("gesturestart", function (e) {
+                        e.preventDefault();
+                    });
+
+                    document.addEventListener("gesturechange", function (e) {
+                        e.preventDefault();
+                    });
+                    document.addEventListener("gestureend", function (e) {
+                        e.preventDefault();
+                    });
+
+                    var container = document.querySelector("#unity-container");
+                    var canvas = document.querySelector("#unity-canvas");
+                    var loadingBar = document.querySelector("#unity-loading-bar");
+                    var progressBarFull = document.querySelector("#unity-progress-bar-full");
+
+                    var buildUrl = "Build";
+                    var loaderUrl = buildUrl + "https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/11.js";
+                    var config = {
+                        dataUrl: buildUrl + "/9bc60d47621b2ea434e477dc2622c69b.data.unityweb",
+                        frameworkUrl: buildUrl + "/98c01d803eeef61b09aaa7d089e7cd00.js.unityweb",
+                        codeUrl: buildUrl + "/b40230bed8c602cf810c399d57e8bdec.wasm.unityweb",
+                        streamingAssetsUrl: "StreamingAssets",
+                        companyName: "Friendzy",
+                        productName: "BikeJump",
+                        productVersion: "0.1",
+                    };
+
+                    //Mobile
+                    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                        var meta = document.createElement('meta');
+                        meta.name = 'viewport';
+                        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+                        document.getElementsByTagName('head')[0].appendChild(meta);
+
+                        container.className = "unity-mobile";
+
+                        canvas.style.width = "100%";
+                        canvas.style.height = "100%";
+
+                        //Resize window when change orientation
+                        window.addEventListener("orientationchange", event => {
+                            canvas.style.width = "100%";
+                            canvas.style.height = "100%";
+                        });
+                    }
+                    //PC
+                    else {
+                        canvas.style.width = "100%";
+                        canvas.style.height = "100%";
+                    }
+
+                    loadingBar.style.display = "block";
+
+                    var script = document.createElement("script");
+                    script.src = loaderUrl;
+                    script.onload = () => {
+                        createUnityInstance(canvas, config, (progress) => {
+                            progressBarFull.style.width = 100 * progress + "%";
+                        }).then((unityInstance) => {
+                            loadingBar.style.display = "none";
+                        }).catch((message) => {
+                            alert(message);
+                        });
+                    };
+                    document.body.appendChild(script);
+                </script>
+            </body>
+            </html>
+        ]]>
+    </Content>
+</Module>
