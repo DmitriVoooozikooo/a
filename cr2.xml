@@ -1,0 +1,21 @@
+<Module>
+    <ModulePrefs title="Cluster Rush"/>
+    <Content type="HTML">
+        <![CDATA[
+            <style>
+                iframe {
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    padding: 0px;
+                    margin: 0px;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                }
+            </style>
+            <iframe src="https://webglmath.github.io/cluster-rush/"></iframe>
+        ]]>
+    </Content>
+</Module>
