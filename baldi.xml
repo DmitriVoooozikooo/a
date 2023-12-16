@@ -1,0 +1,46 @@
+<Module>
+    <ModulePrefs title="Baldi's Basics"/>
+    <Content type="HTML">
+        <![CDATA[
+            <!DOCTYPE html>
+            <html lang="en-us">
+            <head>
+                <meta charset="utf-8">
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <title>Baldi's Basics</title>
+                <link rel="shortcut icon" href="TemplateData/favicon.ico">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/7.css">
+                <script src="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/18.js"></script>
+                <script src="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/17.js"></script>
+                <script>
+                    var unityInstance = UnityLoader.instantiate("unityContainer", "https://html5.iclouds.io/baldis-basics/Build/baldis-basics.json", {onProgress: UnityProgress});
+                </script>
+            </head>
+            <body>
+                <div class="webgl-content">
+                    <div id="unityContainer" style="width: 960px; height: 600px"></div>
+                    <div class="footer" style="display: none;">
+                        <div class="webgl-logo"></div>
+                        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+                        <div class="title">Baldi's Basics</div>
+                    </div>
+                </div>
+            </body>
+            <script>
+                gameSizeInit=function(){
+                    var box=unityInstance.container;
+                    box.style.width=window.innerWidth+ "px";
+                    box.style.height=window.innerHeight+ "px";
+                }
+                if(window.addEventListener){
+                    document.addEventListener("DOMContentLoaded", gameSizeInit);
+                }else{
+                    window.attachEvent('onload', gameSizeInit);
+                }
+            </script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/DmitriVoooozikooo/a@main/16.js"></script>
+          
+            </html>
+        ]]>
+    </Content>
+</Module>
